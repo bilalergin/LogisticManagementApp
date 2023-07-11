@@ -9,4 +9,12 @@ string tempvar = 'Enter_your_name_here';
 System.debug('Hello World!');
 System.debug('My name is ' + tempvar);
 
-insert new Account();
+ try{
+            account acc=new account();
+            acc.phone='233455666';
+            //name eksik olduğundan hata verecek ve sistemin hatasını clasımız yakalayacak
+            insert acc;
+        }catch(exception ex){
+            //datetime.now() today ve bugunun time veriyor...
+            ErrorLogHelper.createErrorLog(datetime.now(),ex.getMessage());
+              }

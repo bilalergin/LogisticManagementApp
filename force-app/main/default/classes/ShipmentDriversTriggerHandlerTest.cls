@@ -22,7 +22,6 @@ private class ShipmentDriversTriggerHandlerTest {
         insert new Shipment_Drivers__c(Driver__c = systemRecord.Driver__c, Shipment__c = systemRecord.Shipment__c);
         
         }catch(Exception exc){
-            ErrorLogHelper.createErrorLog('error', exc.getMessage());
         }
         Test.stopTest();
         Integer systemCount = [SELECT COUNT()FROM Shipment_Drivers__c];
