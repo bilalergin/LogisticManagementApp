@@ -1,1 +1,0 @@
-Database.executeBatch(new ShipmentDeleteBatchHandler());

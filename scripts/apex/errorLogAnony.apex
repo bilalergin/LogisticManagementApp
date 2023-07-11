@@ -6,6 +6,6 @@ try {
     insert ac;
     
 } catch (Exception ex) {
-    ErrorLogHelper.newErrorLog(Datetime.now(), ex.getMessage(), 'Hello Test');
+    ErrorLogHelper.createErrorLog('Computer', Datetime.now(), ex.getMessage(), 'Hello Test');
     
 }
