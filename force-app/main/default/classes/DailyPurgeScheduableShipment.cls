@@ -36,7 +36,7 @@ public class DailyPurgeScheduableShipment implements Database.Batchable<sObject>
         Set<Id> userIds = new Set<Id>();
         for (GroupMember gm : [SELECT UserOrGroupId FROM GroupMember WHERE Group.Name = 'Daily Job']) {
             userIds.add(gm.UserOrGroupId);
-            
+                        
         }
        
         //find unique email public group
