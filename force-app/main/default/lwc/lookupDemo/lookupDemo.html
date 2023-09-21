@@ -1,0 +1,34 @@
+<template>
+    <lightning-card title="Custom Lookup Demo" icon-name="standard:record">
+      <div class="slds-var-p-around_small">
+        <c-custom-lookup
+        object-name="Shipment__c"
+        field-name="Name__c"
+        label="Shipment"
+        parent-id-field="Id"
+        icon-name="standard:shipment"
+        ></c-custom-lookup>
+        
+      </div>
+      <div class="slds-var-p-around_small">
+        <c-custom-lookup
+        object-name="Driver__c"
+        field-name="Name"
+        label="Driver"
+        parent-id-field="Id"
+        icon-name="custom:custom31"
+        ></c-custom-lookup>
+        
+      </div>
+      <div class="slds-var-p-around_small">
+        <c-custom-lookup
+        object-name="Client__c"
+        field-name="Name"
+        label="Client"
+        parent-id-field="Id"
+        icon-name="standard:client"
+        ></c-custom-lookup>
+        
+      </div>
+    </lightning-card>
+</template>
