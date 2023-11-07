@@ -1,5 +1,5 @@
 <template>
-    <div class="slds-m-padding_around">
+    <div class="slds-var-m-around_small">
         <template if:false={selectedRecord}>
         <c-searcher
         onsearch={hanldeSearch}
@@ -8,7 +8,7 @@
         ></c-searcher>
         </template>
     </div>
-    <div class="slds-m-padding_around">
+    <div class="slds-var-m-around_small">
         <template if:false={selectedRecord}>
             <template if:true={records}>
                 <template for:each={records} for:item="rec" for:index="index">

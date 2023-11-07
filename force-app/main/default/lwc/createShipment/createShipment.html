@@ -1,0 +1,86 @@
+<template>
+<lightning-card icon-name="custom:custom98" variant="base" title="Shipment Information">
+<div class="slds-var-m-around_small">
+<template if:true={errors}>{errors}</template>
+
+
+
+    <lightning-input 
+    type='text' 
+    required variant="standard"
+    name="Name__c"
+    value={shipmentRecord.Name__c}
+    label="Name" 
+    onchange={handleChange}>
+</lightning-input>
+
+
+    <c-custom-lookup
+    onselect={handleLookup}
+    object-name="Dispatcher_Manager__c"
+    field-name="Name"
+    parent-id-field="Dispatcher_Manager__c"
+    icon-name="standard:people"
+    label="Dispatcher Manager"
+    ></c-custom-lookup>
+
+    <br/>
+    <lightning-input 
+    type='datetime' 
+    required variant="standard"
+    name="Departure_Date_Time__c"
+    label='Departure Date' 
+    value="shipmentRecord.Departure_Date_Time__c"
+    onchange={handleChange}>
+    </lightning-input>
+
+    <lightning-input 
+    type='datetime' 
+    required variant="standard"
+    name="Arrival_Date_Time__c"
+    label='Arrival Date' 
+    value="shipmentRecord.Arrival_Date_Time__c"
+    onchange={handleChange}>
+    </lightning-input>
+
+    <c-custom-lookup
+    onselect={handleLookup}
+    object-name="LOCATION__c"
+    field-name="Name"
+    parent-id-field="LOCATION__c"
+    icon-name="utulity:location"
+    label="Shipment Location"
+    ></c-custom-lookup>
+
+    <br/>
+
+    <lightning-input-rich-text 
+    variant="standard"
+    name="Shipment_Detail__c"
+    label="Shipment Details" 
+    value={shipmentRecord.Shipment_Detail__c}
+    onchange={handleChange}>
+    </lightning-input-rich-text>
+
+
+
+    <lightning-button 
+    variant="base"
+      label="Cancel"
+      title="Cancel" 
+      onclick={handleCancel} 
+    ></lightning-button>
+
+    &nbsp; &nbsp;
+
+    <lightning-button
+      variant="brand" 
+      label="Add Shipment"
+      title="Add Shipment" 
+      onclick={handleClick} 
+    ></lightning-button>
+</div>
+
+</lightning-card>
+
+</template>

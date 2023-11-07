@@ -3,7 +3,7 @@ import searchRecords from '@salesforce/apex/SearchController.searchRecords';
 
 export default class CustomLookup extends LightningElement {
     @api objectName = 'Shipment__c';
-    @api fieldName = 'Name';
+    @api fieldName = 'Name__c';
     @api iconName = 'standard:shipment';
     @api label = 'Shipment';
     @api parentIdField = 'Shipment__c';
@@ -20,7 +20,8 @@ export default class CustomLookup extends LightningElement {
             fieldName : this.fieldName,
             searchKey : searchVal
         })
-        .then(data=> {
+        .then(data=> { 
+            console.log('Custom Lookup',data);
             if(data){
             let parsedResponse = JSON.parse(data);
             let searchRecordList = parsedResponse[0];
