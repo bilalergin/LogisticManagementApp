@@ -38,7 +38,7 @@ const COLUMNS = [
     },
     {
         label: "Location",
-        fieldName: "Location",
+        fieldName: "location",
         wrapText :"true",
         type:"text",
         cellAttributes:{
