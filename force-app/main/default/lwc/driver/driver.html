@@ -1,0 +1,31 @@
+<template>
+    <template if:true={driver}>
+        <lightning-layout vertical-align="center">
+
+        <lightning-layout-item>
+          <template if:true={driver.Profile__c}>
+            <img src={driver.Profile__c} alt="Profile Photo"/>
+          </template>
+          <template if:false={driver.Profile__c}>
+            <img src="https://png.pngtree.com/png-vector/20190329/ourlarge/pngtree-vector-avatar-icon-png-image_889514.jpg" alt="Profil Resmi">
+
+          </template>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small">
+            <p>{driver.Name}</p>
+            <p>
+                <lightning-formatted-email value={driver.Email}></lightning-formatted-email>
+            </p>
+            <p>
+                <lightning-formatted-rich-text
+                  value={driver.AboutMe__c}
+                   
+                ></lightning-formatted-rich-text>
+            </p>
+          
+        </lightning-layout-item>
+    </lightning-layout>
+
+
+    </template>
+</template>

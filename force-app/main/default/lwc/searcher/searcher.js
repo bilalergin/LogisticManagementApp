@@ -21,7 +21,10 @@ export default class Searcher extends LightningElement {
         var keyword = event.target.value;
 
         if (keyword && keyword.length >=2) {
-            let searchEvent = new CustomEvent('search', {detail:{value: keyword}});
+            let searchEvent = new CustomEvent('search', {
+                detail:{
+                    value: keyword}
+                });
             
             this.dispatchEvent(searchEvent);
         }

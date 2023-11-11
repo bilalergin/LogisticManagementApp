@@ -1,0 +1,76 @@
+<template>
+    <div class="slds-var-m-around_small">
+    <lightning-card icon-name="custom:custom98" variant="Narrow" title="Shipment Information">     
+            <lightning-tabset active-tab-value="shipment " variant="scoped">
+                <!-- Shipment Details Tab -->   
+                <lightning-tab label="Shipment Details" value="shipment">
+                    <div class="slds-var-m-around_small">
+                   <lightning-record-form
+                     columns="2"
+                     layout-type="Full"
+                     object-api-name="Shipment__c"
+                     record-id={recordId}
+                     mode="readonly"
+                   ></lightning-record-form>
+                </div>   
+                  </lightning-tab> 
+                  <!-- Driver Details Tab -->
+                  <lightning-tab label="Driver Details" value="driver" onactive={handleDriverActive}>                   
+                    <lightning-button if:true={isAdmin}
+                      variant="brand"
+                      label="New Driver"
+                      title="New Driver"
+                      onclick={createDriver} 
+                    ></lightning-button>
+                    <br /> <br />
+                    <template if:true={driverList}>
+                        <template for:each={driverList} for:item="driver">
+                            <c-driver
+                            driver={driver}
+                            key={driver.Id}>
+                        </c-driver>
+                        </template>
+                    </template>
+                    <template if:false={errors}>
+                        <template if:false={driverList}>
+                            There are no drivers available
+                        </template>
+                    </template>
+                  </lightning-tab> 
+                  <!-- Location Details Tab -->
+                  <lightning-tab label="Location Details" value="location" onactive={handleLocationDetails} > 
+                    <template if:true={shipmentRec}>
+                      Location Landmark = {shipmentRec.LOCATION__r.Land_Mark__c}
+                      <lightning-formatted-address
+                        street={shipmentRec.LOCATION__r.Street__c}
+                        city={shipmentRec.LOCATION__r.City__c}
+                        country={shipmentRec.LOCATION__r.Country__c}
+                        province={shipmentRec.LOCATION__r.State__c}
+                        postal-code={shipmentRec.LOCATION__r.Postal_Code__c}
+                        title="Shipment Location"
+                      ></lightning-formatted-address>
+
+                    </template>                  
+                </lightning-tab> 
+                  <!-- Client Details -->
+                  <lightning-tab label="Client Details" value="client" onactive={handleClient} >
+                    <lightning-button 
+                      variant="brand"
+                      label="New Client"
+                      title="New Client" 
+                      onclick={createClient} 
+                    ></lightning-button>   
+                    <lightning-datatable
+                      key-field="id"
+                      data={clientList}
+                      show-row-number-column
+                      hide-checkbox-column
+                      columns={columnsList}
+                    ></lightning-datatable>                
+                  </lightning-tab> 
+
+            </lightning-tabset>      
+    </lightning-card>
+</div>
+
+</template>

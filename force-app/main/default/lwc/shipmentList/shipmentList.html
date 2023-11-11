@@ -1,0 +1,45 @@
+<template>
+    <lightning-card icon-name="custom:custom98" variant="base" title="Upcoming Shipment">
+        <div class="slds-var-m-around_small">
+            <template if:true={error}>{error}</template>
+        </div>
+        <div class="slds-var-m-around_small">
+            <c-searcher
+            cmp-label="Shipment Name"
+            show-label="true"
+            onsearch={handleSearch}>
+            </c-searcher>
+        </div>
+
+        &nbsp;
+        <div class="slds-var-m-around_medium">
+
+        <lightning-input
+        type="datetime"
+        value={depertureDateTime}
+        onchange={handleDepDate}
+        label="Deperture Date Time">
+        </lightning-input>
+        &nbsp;
+
+            <c-searcher
+            cmp-label="Shipment Location"
+            show-label="true"
+            onsearch={handleLocationSearch}>
+
+            </c-searcher>
+
+    </div>
+
+        <div class="slds-var-m-around_small">
+            <lightning-datatable
+              key-field="id"
+              data={recordsToDisplay}
+              columns={columnsList}
+              show-row-number-column
+              hide-checkbox-column
+            ></lightning-datatable>
+
+        </div>
+    </lightning-card>
+</template>
